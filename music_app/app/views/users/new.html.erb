@@ -1,3 +1,4 @@
 <h2>Create User</h2>
 
-<%= render "form", user: @user, action: :user_index_url, method: :post%>
+<%= render 'shared/errors' %>
+<%= render "form", user: @user%>

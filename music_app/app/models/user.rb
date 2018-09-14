@@ -7,6 +7,8 @@
 #  password_digest :string           not null
 #  session_token   :string           not null
 #  bio             :text
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 
 class User < ApplicationRecord
@@ -19,9 +21,8 @@ class User < ApplicationRecord
   end
 
   def self.find_by_credentials(email,password)
-    user = User.where(email: email)
-    pw = user.is_password?(password)
-    if user && pw
+    user = User.find_by(email: email)
+    if user && user.is_password?(password)
       user
     else
       nil

@@ -1,3 +1,4 @@
 <h2>Edit User</h2>
 
-<%= render "form", user: @user, action: :user_url, method: :patch%>
+<%= render 'shared/errors' %>
+<%= render "form", user: @user%>
