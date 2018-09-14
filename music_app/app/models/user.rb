@@ -1,6 +1,17 @@
-class User < ApplicatonRecord
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint(8)        not null, primary key
+#  email           :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  bio             :text
+#
+
+class User < ApplicationRecord
   validates :email, :password_digest, :session_token, presence: true
-  validates :email, unique: true
+  validates :email, uniqueness: true
 
   def self.generate_session_token
     SecureRandom.urlsafe_base64
@@ -16,11 +27,11 @@ class User < ApplicatonRecord
     end
   end
 
-  def reset_session_token
+  def reset_session_token!
     self.session_token = User.generate_session_token
   end
 
-  def ensure_session_token
+  def ensure_session_token!
     self.session_token ||= User.generate_session_token
     self.save!
     self.session_token

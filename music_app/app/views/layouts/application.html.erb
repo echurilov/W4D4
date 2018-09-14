@@ -10,6 +10,16 @@
   </head>
 
   <body>
+    <header>
+      <h1>MusicApp</h1>
+      <% if logged_in? %>
+        <br>Logged in as: <a href="<%= user_url %>"><%= current_user.email%></a>
+        <br><input type="submit" value="Log Out">
+      <% else %>
+        <a href="<%= new_user_url %>">Sign Up</a>
+        <a href="<%= new_session_url %>">Sign In</a>
+      <% end %>        
+    </header>
     <%= yield %>
   </body>
 </html>
