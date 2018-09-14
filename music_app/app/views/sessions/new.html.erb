@@ -1,0 +1,27 @@
+<form action="<%= session_url  %>" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+
+  <h2>Log In</h2>
+
+  <% if flash[:errors] %>
+    <ul>
+      <% flash[:errors].each do |error|%>
+      <li><%= error %></li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <label>Email:
+    <input
+    type="email"
+    name="user[email]">
+  </label>
+
+  <label>Password:
+    <input
+      type="password"
+      name="user[password]">
+  </label>
+
+  <input type="submit" value="Submit">
+</form>

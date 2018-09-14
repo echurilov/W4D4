@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to bands_url
+    redirect_to new_session_url
   end
 
   private
